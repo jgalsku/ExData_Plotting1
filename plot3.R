@@ -4,11 +4,7 @@ library(lubridate)
 setwd("C:/Users/yo/Dropbox/coursera/Exploratory_Data_Analysis/exdata_data_household_power_consumption/ExData_Plotting1")
 
 #load data
-hpc <- read.table("./household_power_consumption.txt", sep = ";", na.strings = "?")
-
-#set names of columns and eliminate first row originally read as header
-names(hpc) <- hpc[1,]
-hpc <- hpc[-1,]
+hpc <- read.table("./household_power_consumption.txt", sep = ";", na.strings = "?", header = TRUE)
 
 #change class of variable Date to as.date
 hpc$Date <- as.Date(hpc$Date, "%d/%m/%Y")
