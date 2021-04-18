@@ -4,11 +4,7 @@ library(lubridate)
 setwd("C:/Users/yo/Dropbox/coursera/Exploratory_Data_Analysis/exdata_data_household_power_consumption/ExData_Plotting1")
 
 #load data
-hpc <- read.table("./household_power_consumption.txt", sep = ";", na.strings = "?")
-
-#set names of columns and eliminate first row originally read as header
-names(hpc) <- hpc[1,]
-hpc <- hpc[-1,]
+hpc <- read.table("./household_power_consumption.txt", sep = ";", na.strings = "?", header = TRUE)
 
 #change class of variable Date to as.date
 hpc$Date <- as.Date(hpc$Date, "%d/%m/%Y")
@@ -30,9 +26,9 @@ hpc$datetime <- ymd_hms(hpc$datetime)
 # plot 4
 png(filename = "plot4.png", width = 480, height = 480)
 par(mfrow = c(2,2))
+                     
 plot(hpc$datetime, hpc$Global_active_power, type = "n", ylab = "Global Active Power", xlab = "")
 lines(hpc$datetime, hpc$Global_active_power)
-
 
 plot(hpc$datetime, hpc$Voltage, type = "n", ylab = "Voltage", xlab = "datetime")
 lines(hpc$datetime, hpc$Voltage)
